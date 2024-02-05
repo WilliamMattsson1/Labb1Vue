@@ -68,6 +68,7 @@ export default {
                 <span v-if="crypto.isFavorite" class="seeAllFav" @click="showAllFavs"
                   >See all favorites</span
                 >
+                <!-- Fix here -->
               </td>
             </tr>
           </tbody>
