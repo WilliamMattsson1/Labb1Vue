@@ -5,30 +5,42 @@ export default {
   data() {
     return {
       cryptos: [],
-
       starImg0: 'src/assets/star0.png',
-      starImg1: 'src/assets/star1.png'
+      starImg1: 'src/assets/star1.png',
+      isFavoritesPopupVisible: false
     }
   },
   methods: {
+    /* Laddar in alla cryptos, tar bort decimaler, lägger till isFavorite egenskapen */
     async loadCryptos() {
       let response = await axios.get('https://api.coincap.io/v2/assets')
       let cryptos = response.data.data.map((crypto) => ({
         ...crypto,
         marketCapUsd: Number(crypto.marketCapUsd).toFixed(2),
         priceUsd: Number(crypto.priceUsd).toFixed(3),
-
         isFavorite: false
       }))
       this.cryptos = cryptos
       console.log(cryptos)
     },
+    /* Byter bilden */
     changeStarImg(crypto) {
       crypto.isFavorite = !crypto.isFavorite
+    },
+    showFavoritesPopup() {
+      this.isFavoritesPopupVisible = true
+    },
+    closeFavoritesPopup() {
+      this.isFavoritesPopupVisible = false
     }
   },
   created() {
     this.loadCryptos()
+  },
+  computed: {
+    favoriteCryptos() {
+      return this.cryptos.filter((crypto) => crypto.isFavorite)
+    }
   }
 }
 </script>
@@ -38,7 +50,15 @@ export default {
     <h1 class="text-center">Discover <span class="blue-word">Top</span> Cryptos</h1>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <button @click="loadCryptos" class="btn btn-secondary mb-1">Refresh</button>
+        <button @click="loadCryptos" class="btn btn-secondary m1-1">Refresh</button>
+        <button
+          @click="showFavoritesPopup"
+          class="btn btn-primary m-1"
+          v-if="favoriteCryptos.length > 0"
+        >
+          Show All Favorites
+        </button>
+
         <table v-if="cryptos.length > 0" class="table table-striped table-light table-hover">
           <thead>
             <tr>
@@ -65,8 +85,8 @@ export default {
                   class="favorite-star"
                   :src="crypto.isFavorite ? starImg1 : starImg0"
                 />
-                <span v-if="crypto.isFavorite" class="seeAllFav" @click="showAllFavs"
-                  >See all favorites</span
+                <span v-if="crypto.isFavorite" class="seeAllFav" @click="showFavoritesPopup"
+                  >Show favorites</span
                 >
                 <!-- Fix here -->
               </td>
@@ -76,11 +96,23 @@ export default {
       </div>
     </div>
   </div>
+
+  <!-- Popup -->
+  <div v-if="isFavoritesPopupVisible" class="popup-background"></div>
+  <div v-if="isFavoritesPopupVisible" class="favorites-popup">
+    <h3>Your Favorites</h3>
+    <ol>
+      <li v-for="(crypto, index) in favoriteCryptos" :key="index">
+        {{ crypto.name }} - {{ crypto.symbol }}
+      </li>
+    </ol>
+    <button @click="closeFavoritesPopup" class="btn btn-secondary">Close</button>
+  </div>
 </template>
 
 <style scoped>
 .table-component {
-  margin-top: 18vh;
+  margin-top: 10vh;
 }
 
 h1 {
@@ -112,5 +144,26 @@ table {
   font-weight: 700;
   color: #6106f3;
   margin-left: 2px;
+}
+
+.favorites-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.6rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.popup-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 </style>

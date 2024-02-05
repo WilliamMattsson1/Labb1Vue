@@ -15,7 +15,7 @@ export default {
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent border-bottom">
       <div class="container-fluid">
         <RouterLink class="navbar-brand" to="/"
           ><img src="../assets/LogoCC.png" width="70px" alt="logo"
