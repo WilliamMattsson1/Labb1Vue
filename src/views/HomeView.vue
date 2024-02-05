@@ -1,5 +1,9 @@
-<script setup></script>
+<script setup>
+import TableComponent from '../components/TableComponent.vue'
+</script>
 
 <template>
-  <main></main>
+  <TableComponent />
 </template>
+
+<style></style>

@@ -1,6 +1,4 @@
 <script setup></script>
 <template>
-  <div>Learn view</div>
-  <div>Learn view</div>
-  <div>Learn view</div>
+  <h1>Learn view</h1>
 </template>
