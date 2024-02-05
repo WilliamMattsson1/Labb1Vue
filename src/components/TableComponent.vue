@@ -4,7 +4,10 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      cryptos: []
+      cryptos: [],
+
+      starImg0: 'src/assets/star0.png',
+      starImg1: 'src/assets/star1.png'
     }
   },
   methods: {
@@ -13,10 +16,15 @@ export default {
       let cryptos = response.data.data.map((crypto) => ({
         ...crypto,
         marketCapUsd: Number(crypto.marketCapUsd).toFixed(2),
-        priceUsd: Number(crypto.priceUsd).toFixed(3)
+        priceUsd: Number(crypto.priceUsd).toFixed(3),
+
+        isFavorite: false
       }))
       this.cryptos = cryptos
       console.log(cryptos)
+    },
+    changeStarImg(crypto) {
+      crypto.isFavorite = !crypto.isFavorite
     }
   },
   created() {
@@ -31,33 +39,17 @@ export default {
     <div class="row justify-content-center">
       <div class="col-auto">
         <button @click="loadCryptos" class="btn btn-secondary">Refresh</button>
-        <table
-          v-if="cryptos.length > 0"
-          class="table table-striped table-light table-hover"
-          style="max-width: 1000px"
-        >
+        <table v-if="cryptos.length > 0" class="table table-striped table-light table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Coin</th>
               <th scope="col">Price</th>
               <th scope="col">Market Cap</th>
+              <th scope="col">Favorite</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
-            <!-- <tr>
-              <th scope="row">1</th>
-              <td>
-                <img
-                  class="crypto-icon"
-                  src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png"
-                  alt=""
-                />
-                Bitcoin <span class="text-muted">BTC</span>
-              </td>
-              <td>$43,091,51</td>
-              <td>$845,106,854,876</td>
-            </tr> -->
             <tr v-for="(crypto, index) in cryptos" :key="index">
               <th scope="row">{{ crypto.rank }}</th>
               <td>
@@ -67,6 +59,13 @@ export default {
               </td>
               <td>${{ crypto.priceUsd }}</td>
               <td>${{ crypto.marketCapUsd }}</td>
+              <td>
+                <img
+                  @click="changeStarImg(crypto)"
+                  class="favorite-star"
+                  :src="crypto.isFavorite ? starImg1 : starImg0"
+                />
+              </td>
             </tr>
           </tbody>
         </table>
@@ -94,5 +93,12 @@ h1 {
 
 table {
   border: 2px solid black;
+  max-width: 1000px;
+  min-width: 800px;
+}
+
+.favorite-star {
+  width: 32px;
+  cursor: pointer;
 }
 </style>
