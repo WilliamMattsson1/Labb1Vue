@@ -38,7 +38,7 @@ export default {
     <h1 class="text-center">Discover <span class="blue-word">Top</span> Cryptos</h1>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <button @click="loadCryptos" class="btn btn-secondary">Refresh</button>
+        <button @click="loadCryptos" class="btn btn-secondary mb-1">Refresh</button>
         <table v-if="cryptos.length > 0" class="table table-striped table-light table-hover">
           <thead>
             <tr>
@@ -65,6 +65,9 @@ export default {
                   class="favorite-star"
                   :src="crypto.isFavorite ? starImg1 : starImg0"
                 />
+                <span v-if="crypto.isFavorite" class="seeAllFav" @click="showAllFavs"
+                  >See all favorites</span
+                >
               </td>
             </tr>
           </tbody>
@@ -100,5 +103,13 @@ table {
 .favorite-star {
   width: 32px;
   cursor: pointer;
+}
+
+.seeAllFav {
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #6106f3;
+  margin-left: 2px;
 }
 </style>
