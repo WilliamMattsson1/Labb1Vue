@@ -4,4 +4,9 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+  background-color: #f0ebf7;
+}
+
+nav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
