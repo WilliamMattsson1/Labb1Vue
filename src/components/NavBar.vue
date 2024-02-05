@@ -1,5 +1,16 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
+
+export default {
+  data() {
+    return {
+      links: [
+        { text: 'Portfolio', url: '/portfolio' },
+        { text: 'Learn', url: '/learn' }
+      ]
+    }
+  }
+}
 </script>
 
 <template>
@@ -22,13 +33,10 @@ import { RouterLink, RouterView } from 'vue-router'
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <RouterLink class="nav-link active" aria-current="page" to="/portfolio"
-                >Portfolio</RouterLink
+            <li v-for="(link, index) in links" class="nav-item" :key="index">
+              <RouterLink class="nav-link active" aria-current="page" :to="link.url">
+                {{ link.text }}</RouterLink
               >
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" to="/learn">Learn</RouterLink>
             </li>
           </ul>
           <form class="d-flex">
