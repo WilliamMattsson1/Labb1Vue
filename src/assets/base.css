@@ -7,6 +7,10 @@ body {
   background-color: #f0ebf7;
 }
 
-nav {
+/* nav {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+} */
+
+footer {
+  margin-top: 15vh;
 }
