@@ -18,7 +18,8 @@ export default {
         ...crypto,
         marketCapUsd: Number(crypto.marketCapUsd).toFixed(2),
         priceUsd: Number(crypto.priceUsd).toFixed(3),
-        isFavorite: false
+        isFavorite: false,
+        logo: `https://assets.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png`
       }))
       this.cryptos = cryptos
       console.log(cryptos)
@@ -47,7 +48,7 @@ export default {
 
 <template>
   <div class="table-component">
-    <h1 class="text-center">Discover <span class="blue-word">Top</span> Cryptos</h1>
+    <h1 class="text-center">Discover <span class="blue-word">Top</span> 100 Cryptos</h1>
     <div class="row justify-content-center">
       <div class="col-auto">
         <button @click="loadCryptos" class="btn btn-secondary m1-1">Refresh</button>
@@ -73,7 +74,7 @@ export default {
             <tr v-for="(crypto, index) in cryptos" :key="index">
               <th scope="row">{{ crypto.rank }}</th>
               <td>
-                <!-- <img class="crypto-icon" :src="crypto.image" alt="Crypto Image" /> -->
+                <img :src="crypto.logo" alt="symbol" style="width: 32px" />
                 {{ crypto.name }}
                 <span class="text-muted">{{ crypto.symbol }}</span>
               </td>
@@ -88,7 +89,6 @@ export default {
                 <span v-if="crypto.isFavorite" class="seeAllFav" @click="showFavoritesPopup"
                   >Show favorites</span
                 >
-                <!-- Fix here -->
               </td>
             </tr>
           </tbody>
