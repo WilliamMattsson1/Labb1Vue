@@ -16,7 +16,7 @@ export default {
       let response = await axios.get('https://api.coincap.io/v2/assets')
       let cryptos = response.data.data.map((crypto) => ({
         ...crypto,
-        marketCapUsd: Number(crypto.marketCapUsd).toFixed(2),
+        marketCapUsd: Number(crypto.marketCapUsd).toFixed(),
         priceUsd: Number(crypto.priceUsd).toFixed(3),
         isFavorite: false,
         logo: `https://assets.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png`
@@ -41,6 +41,21 @@ export default {
   computed: {
     favoriteCryptos() {
       return this.cryptos.filter((crypto) => crypto.isFavorite)
+    }
+  },
+
+  watch: {
+    cryptos: {
+      handler(allCryptos) {
+        allCryptos.forEach((crypto) => {
+          if (crypto.marketCapUsd >= 1e9) {
+            crypto.marketCapUsdFormatted = (crypto.marketCapUsd / 1e9).toFixed(2) + 'B'
+          } else {
+            crypto.marketCapUsdFormatted = (crypto.marketCapUsd / 1e6).toFixed(1) + 'M'
+          }
+        })
+      },
+      deep: true
     }
   }
 }
@@ -80,7 +95,7 @@ export default {
                 <RouterLink :to="`/${crypto.id}`" class="read-more-link">Read more</RouterLink>
               </td>
               <td>${{ crypto.priceUsd }}</td>
-              <td>${{ crypto.marketCapUsd }}</td>
+              <td>${{ crypto.marketCapUsdFormatted }}</td>
               <td>
                 <img
                   @click="changeStarImg(crypto)"
@@ -94,6 +109,13 @@ export default {
             </tr>
           </tbody>
         </table>
+        <div v-else>
+          <div class="d-flex justify-content-center mt-2">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading.....</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
