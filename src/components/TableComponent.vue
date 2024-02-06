@@ -77,7 +77,7 @@ export default {
                 <img :src="crypto.logo" alt="symbol" style="width: 32px" />
                 {{ crypto.name }}
                 <span class="text-muted">{{ crypto.symbol }}</span>
-                <RouterLink :to="`/${crypto.id}`">Read more</RouterLink>
+                <RouterLink :to="`/${crypto.id}`" class="read-more-link">Read more</RouterLink>
               </td>
               <td>${{ crypto.priceUsd }}</td>
               <td>${{ crypto.marketCapUsd }}</td>
@@ -166,5 +166,11 @@ table {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.read-more-link {
+  text-decoration: none;
+  padding-left: 6px;
+  font-weight: 500;
 }
 </style>
