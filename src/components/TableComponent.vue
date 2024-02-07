@@ -1,7 +1,13 @@
-<script>
+<script setup>
 import axios from 'axios'
+import PopupComponent from './PopupComponent.vue'
+</script>
 
+<script>
 export default {
+  components: {
+    PopupComponent
+  },
   data() {
     return {
       cryptos: [],
@@ -30,10 +36,12 @@ export default {
     },
     showFavoritesPopup() {
       this.isFavoritesPopupVisible = true
-    },
-    closeFavoritesPopup() {
-      this.isFavoritesPopupVisible = false
     }
+
+    /* Om man ska ha popup i samma komponent. */
+    /* closeFavoritesPopup() {
+      this.isFavoritesPopupVisible = false
+    } */
   },
   created() {
     this.loadCryptos()
@@ -74,7 +82,6 @@ export default {
         >
           Show All Favorites
         </button>
-
         <table v-if="cryptos.length > 0" class="table table-striped table-light table-hover">
           <thead>
             <tr>
@@ -120,8 +127,14 @@ export default {
     </div>
   </div>
 
-  <!-- Popup -->
-  <div v-if="isFavoritesPopupVisible" class="popup-background"></div>
+  <PopupComponent
+    :favoriteCryptos="favoriteCryptos"
+    :isFavoritesPopupVisible="isFavoritesPopupVisible"
+    @close-popup="isFavoritesPopupVisible = $event"
+  />
+
+  <!-- Popup Ifall man ska ha i samma komponent -->
+  <!-- <div v-if="isFavoritesPopupVisible" class="popup-background"></div>
   <div v-if="isFavoritesPopupVisible" class="favorites-popup">
     <h3>Your Favorites</h3>
     <ol>
@@ -130,10 +143,10 @@ export default {
       </li>
     </ol>
     <button @click="closeFavoritesPopup" class="btn btn-secondary">Close</button>
-  </div>
+  </div> -->
 </template>
 
-<style scoped>
+<style>
 .table-component {
   margin-top: 10vh;
 }
