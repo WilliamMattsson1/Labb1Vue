@@ -14,7 +14,10 @@
 
 <script>
 export default {
-  props: ['favoriteCryptos', 'isFavoritesPopupVisible'],
+  props: {
+    favoriteCryptos: Array,
+    isFavoritesPopupVisible: Boolean
+  },
   emits: ['close-popup'],
   methods: {
     closeFavoritesPopup() {
