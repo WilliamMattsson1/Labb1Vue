@@ -29,10 +29,26 @@ export default {
       }))
       this.cryptos = cryptos
       console.log(cryptos)
+      this.findFavorites()
+    },
+    /* Kollar på favorites som är sparade i localstorage och gör isFavorite = true */
+    findFavorites() {
+      for (let i = 0; i < localStorage.length; i++) {
+        const cryptoName = localStorage.key(i)
+        const crypto = this.cryptos.find((crypto) => crypto.name === cryptoName)
+        crypto.isFavorite = true
+      }
+      console.log('Ändrade om dom till true')
     },
     /* Byter bilden */
     changeStarImg(crypto) {
       crypto.isFavorite = !crypto.isFavorite
+
+      if (crypto.isFavorite) {
+        localStorage.setItem(`${crypto.name}`, true)
+      } else {
+        localStorage.removeItem(`${crypto.name}`)
+      }
     },
     showFavoritesPopup() {
       this.isFavoritesPopupVisible = true
