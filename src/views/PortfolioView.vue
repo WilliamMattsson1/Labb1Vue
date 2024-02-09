@@ -1,9 +1,10 @@
 <script>
 import CoinDetails from '../components/CoinDetails.vue'
 import { usePortfolioStore } from '../stores/portfolioStore.js'
+import CoinForm from '../components/CoinForm.vue'
 
 export default {
-  components: { CoinDetails },
+  components: { CoinDetails, CoinForm },
   setup() {
     const portfolioStore = usePortfolioStore()
 
@@ -15,6 +16,9 @@ export default {
   <div class="container text-center m-4">
     <h2 class="text-center">Welcome to your <span class="blue-word">portfolio</span> overview</h2>
     <p class="text-center text-under-h2">Create and manage your own portfolio</p>
+  </div>
+  <div>
+    <CoinForm />
   </div>
 
   <div class="show-portfolio">
@@ -32,7 +36,11 @@ export default {
     </p>
     <div class="collapse" id="collapseExample">
       <ul class="list-group portfolio-container">
-        <li class="list-group-item" v-for="(coin, index) in portfolioStore.coins" :key="index">
+        <li
+          class="list-group-item list-group-item-action"
+          v-for="(coin, index) in portfolioStore.coins"
+          :key="index"
+        >
           <CoinDetails :coin="coin" />
         </li>
         <h5 class="p-3">Portfolio value: {{ this.portfolioStore.totalAmount }}kr</h5>
@@ -44,8 +52,8 @@ export default {
 <style>
 .portfolio-container {
   width: 400px;
-  border: 2px black solid;
-  border-radius: 8px;
+  border: 2px rgba(0, 0, 0, 0.4) solid;
+  border-radius: 20px;
 }
 
 .text-under-h2 {
