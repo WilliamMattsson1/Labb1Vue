@@ -12,7 +12,10 @@ export default {
 }
 </script>
 <template>
-  <h1>Portfolio View - {{ portfolioStore.name }}</h1>
+  <div class="container text-center m-4">
+    <h2 class="text-center">Welcome to your <span class="blue-word">portfolio</span> overview</h2>
+    <p class="text-center text-under-h2">Create and manage your own portfolio</p>
+  </div>
 
   <div class="show-portfolio">
     <p class="d-inline-flex gap-1">
@@ -32,6 +35,7 @@ export default {
         <li class="list-group-item" v-for="(coin, index) in portfolioStore.coins" :key="index">
           <CoinDetails :coin="coin" />
         </li>
+        <h5 class="p-3">Portfolio value: {{ this.portfolioStore.totalAmount }}kr</h5>
       </ul>
     </div>
   </div>
@@ -39,12 +43,16 @@ export default {
 
 <style>
 .portfolio-container {
-  width: 500px;
+  width: 400px;
   border: 2px black solid;
   border-radius: 8px;
 }
 
-.show-portfolio {
-  margin: auto;
+.text-under-h2 {
+  font-size: 20px;
+  font-weight: 400;
 }
+
+/* .show-portfolio {
+} */
 </style>

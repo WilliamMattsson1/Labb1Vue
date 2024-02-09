@@ -25,7 +25,7 @@ export default {
   computed: {
     getPercentage() {
       const totalAmount = this.portfolioStore.totalAmount
-      return ((this.coin.amount / totalAmount) * 100).toFixed(1)
+      return ((this.coin.amount / totalAmount) * 100).toFixed()
     }
   },
   setup() {
