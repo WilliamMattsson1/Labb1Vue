@@ -13,12 +13,9 @@ export default {
 }
 </script>
 <template>
-  <div class="container text-center m-4">
-    <h2 class="text-center">Welcome to your <span class="blue-word">portfolio</span> overview</h2>
-    <p class="text-center text-under-h2">Create and manage your own portfolio</p>
-  </div>
-  <div>
-    <CoinForm />
+  <div class="container text-center mt-4">
+    <h2 class="">Welcome to your <span class="blue-word">portfolio</span> overview</h2>
+    <p class="text-under-h2">Create and manage your own portfolio</p>
   </div>
 
   <div class="show-portfolio">
@@ -43,15 +40,23 @@ export default {
         >
           <CoinDetails :coin="coin" />
         </li>
-        <h5 class="p-3">Portfolio value: {{ this.portfolioStore.totalAmount }}kr</h5>
+        <div>
+          <h5 class="p-2 total-amount">
+            <span class="total-amount">Portfolio value:</span>
+            <span class="blue-word">${{ this.portfolioStore.totalAmount }}</span>
+          </h5>
+        </div>
       </ul>
     </div>
+  </div>
+  <div>
+    <CoinForm />
   </div>
 </template>
 
 <style>
 .portfolio-container {
-  width: 400px;
+  width: 360px;
   border: 2px rgba(0, 0, 0, 0.4) solid;
   border-radius: 20px;
 }
@@ -61,6 +66,17 @@ export default {
   font-weight: 400;
 }
 
-/* .show-portfolio {
-} */
+.show-portfolio {
+  margin-left: 1rem;
+}
+
+.total-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-amount p {
+  font-weight: 500;
+}
 </style>
