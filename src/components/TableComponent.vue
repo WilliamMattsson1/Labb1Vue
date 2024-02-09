@@ -133,9 +133,9 @@ export default {
           </tbody>
         </table>
         <div v-else>
-          <div class="d-flex justify-content-center mt-2">
+          <div class="d-flex justify-content-center mt-3">
             <div class="spinner-border" role="status">
-              <span class="sr-only">Loading.....</span>
+              <span class="sr-only"></span>
             </div>
           </div>
         </div>
