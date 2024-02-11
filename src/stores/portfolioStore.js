@@ -31,6 +31,7 @@ export const usePortfolioStore = defineStore('portfolioStore', {
   actions: {
     addCoin(coin) {
       this.coins.push(coin)
+      console.log(coin)
     }
   }
 })
