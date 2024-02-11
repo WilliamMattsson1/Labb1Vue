@@ -1,8 +1,8 @@
 <template>
-  <div class="d-flex justify-content-between coin-container">
+  <div class="d-flex justify-content-between coin-container border-bottom">
     <h6>{{ coin.title }} - ${{ coin.amount }}</h6>
     <div>
-      <p class="badge bg-primary rounded-pill">{{ getPercentage }}%</p>
+      <p class="badge bg-secondary rounded-pill allocation">{{ getPercentage }}%</p>
       <i class="material-icons">close</i>
     </div>
   </div>
@@ -43,5 +43,9 @@ h6 {
 
 .coin-container {
   align-items: center;
+}
+
+.allocation {
+  font-size: 16px;
 }
 </style>

@@ -1,10 +1,6 @@
 <template>
-  <!-- <form @submit.prevent="submitNewCoin">
-    <input type="text" placeholder="Enter coin name..." v-model="newCoinName" />
-    <input type="text" placeholder="Enter coin amount..." v-model="newCoinAmount" />
-    <button>Add Coin</button>
-  </form> -->
-  <form class="col-lg-5 add-coin-form" @submit.prevent="submitNewCoin">
+  <h5>Add assets to your portfolio</h5>
+  <form class="add-coin-form" @submit.prevent="submitNewCoin">
     <div class="mb-3 mt-3">
       <label for="newCoinName" class="form-label">Name</label>
       <input
@@ -13,6 +9,7 @@
         id="newCoinName"
         placeholder="Enter coin name..."
         v-model="newCoinName"
+        required
       />
     </div>
     <div class="mb-3">
@@ -23,6 +20,7 @@
         id="newCoinAmount"
         placeholder="Enter dollar amount..."
         v-model="newCoinAmount"
+        required
       />
     </div>
     <div class="d-grid gap-2">
@@ -63,8 +61,4 @@ export default {
 }
 </script>
 
-<style>
-.add-coin-form {
-  margin: auto;
-}
-</style>
+<style></style>

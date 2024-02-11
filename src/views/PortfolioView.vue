@@ -18,56 +18,59 @@ export default {
     <p class="text-under-h2">Create and manage your own portfolio</p>
   </div>
 
-  <div class="show-portfolio">
-    <p class="d-inline-flex gap-1">
-      <button
-        class="btn btn-primary"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseExample"
-        aria-expanded="false"
-        aria-controls="collapseExample"
-      >
-        Show portfolio
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <ul class="list-group portfolio-container">
-        <li
-          class="list-group-item list-group-item-action"
-          v-for="(coin, index) in portfolioStore.coins"
-          :key="index"
-        >
-          <CoinDetails :coin="coin" />
-        </li>
-        <div>
-          <h5 class="p-2 total-amount">
-            <span class="total-amount">Portfolio value:</span>
-            <span class="blue-word">${{ this.portfolioStore.totalAmount }}</span>
-          </h5>
+  <div class="container-lg text-center mt-4">
+    <div class="row">
+      <div class="col-lg-5 col-md-12">
+        <div class="show-portfolio mt-4">
+          <!-- <ul class="list-group portfolio-container">
+              <li
+                class="list-group-item list-group-item-action"
+                v-for="(coin, index) in portfolioStore.coins"
+                :key="index"
+              >
+                <CoinDetails :coin="coin" />
+              </li>
+              <div>
+                <h5 class="p-2 total-amount">
+                  <span class="total-amount">Portfolio value:</span>
+                  <span class="blue-word">${{ this.portfolioStore.totalAmount }}</span>
+                </h5>
+              </div>
+            </ul> -->
+          <div class="container portfolio-container">
+            <div v-for="(coin, index) in portfolioStore.coins" :key="index">
+              <CoinDetails :coin="coin" />
+            </div>
+            <div>
+              <h5 class="pt-3 total-amount">
+                <span class="total-amount">Portfolio value:</span>
+                <span class="blue-word">${{ this.portfolioStore.totalAmount }}</span>
+              </h5>
+            </div>
+          </div>
         </div>
-      </ul>
+      </div>
+
+      <div class="col-lg-7 col-md-12 mt-4 form-container">
+        <CoinForm />
+      </div>
     </div>
-  </div>
-  <div>
-    <CoinForm />
   </div>
 </template>
 
 <style>
 .portfolio-container {
   width: 360px;
-  border: 2px rgba(0, 0, 0, 0.4) solid;
+  border: 2px white solid;
   border-radius: 20px;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .text-under-h2 {
   font-size: 20px;
   font-weight: 400;
-}
-
-.show-portfolio {
-  margin-left: 1rem;
 }
 
 .total-amount {
@@ -78,5 +81,16 @@ export default {
 
 .total-amount p {
   font-weight: 500;
+}
+
+.form-container {
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2rem;
+}
+
+.form-container input {
+  background-color: #f0ebf7;
 }
 </style>
