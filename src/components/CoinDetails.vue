@@ -3,7 +3,7 @@
     <h6>{{ coin.title }} - ${{ coin.amount }}</h6>
     <div>
       <p class="badge bg-secondary rounded-pill allocation">{{ getPercentage }}%</p>
-      <i class="material-icons">close</i>
+      <i class="material-icons" @click="portfolioStore.deleteCoin(coin.id)">close</i>
     </div>
   </div>
 </template>
@@ -47,5 +47,9 @@ h6 {
 
 .allocation {
   font-size: 16px;
+}
+
+i {
+  cursor: pointer;
 }
 </style>

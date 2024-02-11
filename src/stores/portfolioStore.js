@@ -32,6 +32,11 @@ export const usePortfolioStore = defineStore('portfolioStore', {
     addCoin(coin) {
       this.coins.push(coin)
       console.log(coin)
+    },
+    deleteCoin(coinId) {
+      this.coins = this.coins.filter((coin) => {
+        return coin.id !== coinId
+      })
     }
   }
 })
