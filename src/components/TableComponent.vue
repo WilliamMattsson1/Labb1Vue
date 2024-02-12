@@ -53,11 +53,6 @@ export default {
     showFavoritesPopup() {
       this.isFavoritesPopupVisible = true
     }
-
-    /* Om man ska ha popup i samma komponent. */
-    /* closeFavoritesPopup() {
-      this.isFavoritesPopupVisible = false
-    } */
   },
   created() {
     this.loadCryptos()
@@ -98,7 +93,10 @@ export default {
         >
           Show All Favorites
         </button>
-        <table v-if="cryptos.length > 0" class="table table-striped table-light table-hover">
+        <table
+          v-if="cryptos.length > 0"
+          class="desktop-table table table-striped table-light table-hover"
+        >
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -132,6 +130,42 @@ export default {
             </tr>
           </tbody>
         </table>
+
+        <table
+          v-if="cryptos.length > 0"
+          class="mobile-table table table-striped table-light table-hover table-responsive"
+        >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Coin</th>
+              <th scope="col">Price</th>
+              <th scope="col">Favorite</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr v-for="(crypto, index) in cryptos" :key="index">
+              <th scope="row">{{ crypto.rank }}</th>
+              <td>
+                <img :src="crypto.logo" alt="symbol" style="width: 32px" />
+                {{ crypto.name }}
+                <span class="text-muted">{{ crypto.symbol }}</span>
+                <RouterLink :to="`/${crypto.id}`" class="read-more-link"
+                  ><br />Read more</RouterLink
+                >
+              </td>
+              <td>${{ crypto.priceUsd }}</td>
+              <td>
+                <img
+                  @click="changeStarImg(crypto)"
+                  class="favorite-star m-4"
+                  :src="crypto.isFavorite ? starImg1 : starImg0"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
         <div v-else>
           <div class="d-flex justify-content-center mt-3">
             <div class="spinner-border" role="status">
@@ -148,18 +182,6 @@ export default {
     :isFavoritesPopupVisible="isFavoritesPopupVisible"
     @close-popup="isFavoritesPopupVisible = $event"
   />
-
-  <!-- Popup Ifall man ska ha i samma komponent -->
-  <!-- <div v-if="isFavoritesPopupVisible" class="popup-background"></div>
-  <div v-if="isFavoritesPopupVisible" class="favorites-popup">
-    <h3>Your Favorites</h3>
-    <ol>
-      <li v-for="(crypto, index) in favoriteCryptos" :key="index">
-        {{ crypto.name }} - {{ crypto.symbol }}
-      </li>
-    </ol>
-    <button @click="closeFavoritesPopup" class="btn btn-secondary">Close</button>
-  </div> -->
 </template>
 
 <style>
@@ -181,6 +203,9 @@ h1 {
 
 table {
   border: 2px solid black;
+}
+
+.desktop-table {
   max-width: 1000px;
   min-width: 800px;
 }
@@ -223,5 +248,23 @@ table {
   text-decoration: none;
   padding-left: 6px;
   font-weight: 500;
+}
+
+.mobile-table {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .mobile-table {
+    display: block;
+  }
+  .desktop-table {
+    display: none;
+  }
+
+  .favorites-popup {
+    width: 100%;
+    border-radius: 0;
+  }
 }
 </style>
