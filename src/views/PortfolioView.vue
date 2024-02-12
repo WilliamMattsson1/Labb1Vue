@@ -20,7 +20,7 @@ export default {
     <p class="text-under-h2">Create and manage your own portfolio</p>
   </div>
 
-  <div class="container-lg text-center mt-2 justify-content-center align.items-center">
+  <div class="container-lg text-center mt-2 justify-content-center align-items-center">
     <div class="row">
       <div class="col-lg-7 col-md-12 mt-4 form-container">
         <CoinForm />
@@ -40,8 +40,48 @@ export default {
             </div>
           </div>
         </div>
-        <div class="d-flex justify-content-center mt-2">
+        <!-- <div class="d-flex justify-content-center mt-2">
           <PortfolioChart />
+        </div> -->
+      </div>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <h5>
+        Dive deep into your portfolio with <br />
+        <span class="blue-word">advanced analysis tools</span>
+      </h5>
+      <div class="col-lg-6 col-md-12">
+        <div class="card col-12">
+          <img
+            src="https://images.unsplash.com/photo-1613442368680-a30262ad8b3b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            class="card-img-top"
+            alt="Trading image"
+          />
+          <div class="card-body">
+            <h6 class="card-title">CC Pro 30% Off</h6>
+            <p class="card-text">Get CC Pro right now to get access to 40+ analysis tools!</p>
+            <a href="/" class="btn btn-primary disabled">Get Pro Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div v-if="portfolioStore.coins.length > 0">
+          <PortfolioChart />
+        </div>
+        <div v-else>
+          <div class="card col-12">
+            <img
+              src="https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="card-img-top"
+              alt="Analytics"
+            />
+            <div class="card-body">
+              <h6 class="card-title"></h6>
+              <p class="card-text">
+                Add assets to your portfolio to view analytics of your whole portfolio
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -83,5 +123,10 @@ export default {
 
 .form-container input {
   background-color: #f0ebf7;
+}
+
+.card {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: none;
 }
 </style>
