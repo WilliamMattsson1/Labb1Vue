@@ -19,17 +19,21 @@ export default {
   methods: {
     /* Laddar in alla cryptos, tar bort decimaler, lägger till isFavorite egenskapen */
     async loadCryptos() {
-      let response = await axios.get('https://api.coincap.io/v2/assets')
-      let cryptos = response.data.data.map((crypto) => ({
-        ...crypto,
-        marketCapUsd: Number(crypto.marketCapUsd).toFixed(),
-        priceUsd: Number(crypto.priceUsd).toFixed(3),
-        isFavorite: false,
-        logo: `https://assets.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png`
-      }))
-      this.cryptos = cryptos
-      console.log(cryptos)
-      this.findFavorites()
+      try {
+        let response = await axios.get('https://api.coincap.io/v2/assets')
+        let cryptos = response.data.data.map((crypto) => ({
+          ...crypto,
+          marketCapUsd: Number(crypto.marketCapUsd).toFixed(),
+          priceUsd: Number(crypto.priceUsd).toFixed(3),
+          isFavorite: false,
+          logo: `https://assets.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png`
+        }))
+        this.cryptos = cryptos
+        console.log(cryptos)
+        this.findFavorites()
+      } catch (error) {
+        console.error('Error loading cryptos', error)
+      }
     },
     /* Kollar på favorites som är sparade i localstorage och gör isFavorite = true */
     findFavorites() {
