@@ -12,6 +12,11 @@ export default {
       ],
       searchTerm: ''
     }
+  },
+  methods: {
+    resetForm() {
+      this.searchTerm = ''
+    }
   }
 }
 </script>
@@ -50,7 +55,10 @@ export default {
               aria-label="Search"
               v-model="searchTerm"
             />
-            <RouterLink :to="`/${searchTerm.toLowerCase()}`" class="btn btn-secondary"
+            <RouterLink
+              :to="`/${searchTerm.toLowerCase()}`"
+              class="btn btn-secondary"
+              @click="resetForm"
               >Search</RouterLink
             >
           </form>
