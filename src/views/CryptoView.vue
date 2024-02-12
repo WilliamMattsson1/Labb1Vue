@@ -91,6 +91,9 @@ export default {
   border-radius: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   height: fit-content;
-  margin-bottom: 6rem; /* To push it to the bottom */
+}
+
+.container {
+  margin-bottom: 8rem;
 }
 </style>

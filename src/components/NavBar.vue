@@ -17,10 +17,10 @@ export default {
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary border-bottom">
       <div class="container-fluid">
         <RouterLink class="navbar-brand" to="/"
-          ><img src="../assets/LogoCC.png" width="70px" alt="logo"
+          ><img src="../assets/LogoCC.png" width="50px" alt="logo"
         /></RouterLink>
         <button
           class="navbar-toggler"
@@ -48,7 +48,7 @@ export default {
               placeholder="Search coins"
               aria-label="Search"
             />
-            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <button class="btn btn-secondary" type="submit">Search</button>
           </form>
         </div>
       </div>
