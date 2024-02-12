@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-4">
+  <div v-if="!searchError" class="container mt-4">
     <h2 class="text-center">{{ crypto.name }}</h2>
     <div class="row">
       <div class="crypto-info col-lg-5 col-12 bg-light p-4 mt-4">
@@ -39,6 +39,17 @@
       </div>
     </div>
   </div>
+
+  <div v-else class="container mt-5 text-center">
+    <h3>Couldn't find "{{ this.$route.params.id }}"...</h3>
+    <p>Try again or search for some other coin</p>
+    <div>
+      <img src="../assets/searchError.png" alt="search error" class="search-error-img" />
+    </div>
+    <RouterLink class="btn btn-primary mt-4" to="/"
+      >Home <i class="material-icons justify-content-center"> home</i></RouterLink
+    >
+  </div>
 </template>
 
 <script>
@@ -47,7 +58,8 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      crypto: ''
+      crypto: '',
+      searchError: false
     }
   },
   async created() {
@@ -56,17 +68,24 @@ export default {
   methods: {
     async getCryptoData() {
       const cryptoId = this.$route.params.id
-      const res = await axios.get(`https://api.coincap.io/v2/assets/${cryptoId}`)
-      console.log(res.data.data)
-      this.crypto = res.data.data
-      this.crypto = {
-        ...this.crypto,
-        marketCapUsd: Number(this.crypto.marketCapUsd).toFixed(),
-        priceUsd: Number(this.crypto.priceUsd).toFixed(3),
-        logo: `https://assets.coincap.io/assets/icons/${this.crypto.symbol.toLowerCase()}@2x.png`,
-        changePercent24Hr: Number(this.crypto.changePercent24Hr).toFixed(2)
+
+      try {
+        const res = await axios.get(`https://api.coincap.io/v2/assets/${cryptoId}`)
+        console.log(res.data.data)
+        this.crypto = res.data.data
+        this.crypto = {
+          ...this.crypto,
+          marketCapUsd: Number(this.crypto.marketCapUsd).toFixed(),
+          priceUsd: Number(this.crypto.priceUsd).toFixed(3),
+          logo: `https://assets.coincap.io/assets/icons/${this.crypto.symbol.toLowerCase()}@2x.png`,
+          changePercent24Hr: Number(this.crypto.changePercent24Hr).toFixed(2)
+        }
+        this.searchError = false
+        console.log(this.crypto)
+      } catch (error) {
+        console.error('Error fetching data', error)
+        this.searchError = true
       }
-      console.log(this.crypto)
     }
   },
   computed: {
@@ -76,6 +95,11 @@ export default {
       } else {
         return (this.crypto.marketCapUsd / 1e6).toFixed(1) + 'M'
       }
+    }
+  },
+  watch: {
+    '$route.params.id': {
+      handler: 'getCryptoData'
     }
   }
 }
@@ -95,5 +119,9 @@ export default {
 
 .container {
   margin-bottom: 8rem;
+}
+
+.search-error-img {
+  width: 240px;
 }
 </style>

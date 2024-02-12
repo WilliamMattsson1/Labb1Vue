@@ -9,7 +9,8 @@ export default {
       links: [
         { text: 'Portfolio', url: '/portfolio' },
         { text: 'Learn', url: '/learn' }
-      ]
+      ],
+      searchTerm: ''
     }
   }
 }
@@ -47,8 +48,11 @@ export default {
               type="search"
               placeholder="Search coins"
               aria-label="Search"
+              v-model="searchTerm"
             />
-            <button class="btn btn-secondary" type="submit">Search</button>
+            <RouterLink :to="`/${searchTerm.toLowerCase()}`" class="btn btn-secondary"
+              >Search</RouterLink
+            >
           </form>
         </div>
       </div>
