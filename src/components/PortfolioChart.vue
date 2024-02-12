@@ -31,7 +31,11 @@ export default {
     return { portfolioStore }
   },
 
-  props: ['data'],
+  props: {
+    data: {
+      type: Object
+    }
+  },
 
   computed: {
     chartData() {
