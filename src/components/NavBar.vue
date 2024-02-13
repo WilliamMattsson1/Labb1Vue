@@ -7,15 +7,20 @@ export default {
   data() {
     return {
       links: [
+        { text: 'Home', url: '/' },
         { text: 'Portfolio', url: '/portfolio' },
         { text: 'Learn', url: '/learn' }
       ],
-      searchTerm: ''
+      searchTerm: '',
+      currentPage: ''
     }
   },
   methods: {
     resetForm() {
       this.searchTerm = ''
+    },
+    setCurrentPage(page) {
+      this.currentPage = page
     }
   }
 }
@@ -42,7 +47,13 @@ export default {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li v-for="(link, index) in links" class="nav-item" :key="index">
-              <RouterLink class="nav-link active" aria-current="page" :to="link.url">
+              <RouterLink
+                :class="{ active: currentPage === link }"
+                class="nav-link"
+                aria-current="page"
+                :to="link.url"
+                @click="setCurrentPage(link)"
+              >
                 {{ link.text }}</RouterLink
               >
             </li>

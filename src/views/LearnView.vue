@@ -16,8 +16,8 @@
           </a>
         </div>
       </div>
-      <div class="col-lg-9 col-12 pr-4">
-        <div v-if="currentCategory === 'Cryptocurrencies'" class="pt-4">
+      <div class="col-lg-9 col-12 pr-4 pt-4">
+        <div v-if="currentCategory === 'Cryptocurrencies'">
           <h2>Cryptocurrencies</h2>
           <p class="learn-text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto repudiandae accusamus
