@@ -86,7 +86,7 @@ export default {
 
 <template>
   <div class="table-component">
-    <h1 class="text-center">Discover <span class="blue-word">Top</span> 100 Cryptos</h1>
+    <h1 class="text-center">Explore the <span class="blue-word">Top</span> 100 Cryptos</h1>
     <div class="row justify-content-center">
       <div class="col-auto">
         <button @click="loadCryptos" class="btn btn-secondary m1-1">Refresh</button>

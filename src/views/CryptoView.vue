@@ -47,7 +47,7 @@
     <h3>Couldn't find "{{ this.$route.params.id }}"...</h3>
     <p>Try again or search for some other coin</p>
     <div>
-      <img src="../assets/searchError.png" alt="search error" class="search-error-img" />
+      <img src="../assets/searchError2.png" alt="search error" class="search-error-img" />
     </div>
     <RouterLink class="btn btn-primary mt-4" to="/"
       >Home <i class="material-icons justify-content-center"> home</i></RouterLink
@@ -135,9 +135,17 @@ export default {
   width: 240px;
 }
 
+hr {
+  display: none;
+}
+
 @media (max-width: 1000px) {
   .crypto-info {
     width: 94%;
+  }
+
+  hr {
+    display: block;
   }
 }
 </style>
