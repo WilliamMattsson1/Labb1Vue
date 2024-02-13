@@ -16,7 +16,7 @@ export default {
 </script>
 <template>
   <div class="container text-center mt-2">
-    <h2 class="">Welcome to your <span class="blue-word">portfolio</span> overview</h2>
+    <h2 class="mt-4">Welcome to your <span class="blue-word">portfolio</span> overview</h2>
     <p class="text-under-h2">Create and manage your own portfolio</p>
   </div>
 
@@ -40,11 +40,11 @@ export default {
             </div>
           </div>
         </div>
-        <!-- <div class="d-flex justify-content-center mt-2">
-          <PortfolioChart />
-        </div> -->
       </div>
     </div>
+
+    <hr />
+
     <div class="row mt-4 justify-content-center">
       <h5>
         Dive deep into your portfolio with <br />
@@ -90,10 +90,10 @@ export default {
 
 <style>
 .portfolio-container {
-  width: 360px;
+  min-width: 348px;
   border: 2px white solid;
   border-radius: 20px;
-  padding: 1rem;
+  padding: 0.8rem;
   background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
@@ -117,7 +117,7 @@ export default {
   border-radius: 20px;
   background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  padding: 2rem;
+  padding: 0.8rem;
   height: fit-content;
 }
 
@@ -125,8 +125,25 @@ export default {
   background-color: #f0ebf7;
 }
 
+hr {
+  width: 92%;
+  margin: 3rem auto;
+  border-bottom: 5px solid black;
+
+  background-color: black;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
 .card {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border: none;
+}
+
+@media (max-width: 1000px) {
+  .form-container {
+    margin: auto;
+    width: 92%;
+  }
 }
 </style>

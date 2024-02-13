@@ -19,8 +19,11 @@
         </p>
         <router-link to="/" class="btn btn-primary">Back to List</router-link>
       </div>
+
       <div class="col-lg-7 col-12">
-        <div class="crypto-info general-info bg-light p-4 mt-4">
+        <hr />
+
+        <div class="general-info bg-light p-4 mt-4">
           <h4>General Crypto Information</h4>
           <p>
             Cryptocurrencies are digital or virtual currencies used as a medium of exchange. They
@@ -115,6 +118,13 @@ export default {
   border-radius: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   height: fit-content;
+  margin: auto;
+}
+
+.general-info {
+  border-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  height: fit-content;
 }
 
 .container {
@@ -123,5 +133,11 @@ export default {
 
 .search-error-img {
   width: 240px;
+}
+
+@media (max-width: 1000px) {
+  .crypto-info {
+    width: 94%;
+  }
 }
 </style>
