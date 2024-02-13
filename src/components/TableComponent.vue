@@ -24,7 +24,7 @@ export default {
         let cryptos = response.data.data.map((crypto) => ({
           ...crypto,
           marketCapUsd: Number(crypto.marketCapUsd).toFixed(),
-          priceUsd: Number(crypto.priceUsd).toFixed(3),
+          priceUsd: Number(crypto.priceUsd).toFixed(2),
           isFavorite: false,
           logo: `https://assets.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png`
         }))
@@ -89,13 +89,15 @@ export default {
     <h1 class="text-center">Explore the <span class="blue-word">Top</span> 100 Cryptos</h1>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <button @click="loadCryptos" class="btn btn-secondary m1-1">Refresh</button>
+        <button @click="loadCryptos" class="btn btn-secondary m1-1">
+          Refresh <i class="bi bi-arrow-clockwise"></i>
+        </button>
         <button
           @click="showFavoritesPopup"
           class="btn btn-primary m-1"
           v-if="favoriteCryptos.length > 0"
         >
-          Show All Favorites
+          Show Favorites <i class="bi bi-star"></i>
         </button>
         <table
           v-if="cryptos.length > 0"

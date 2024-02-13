@@ -29,12 +29,15 @@ export default {
       <div class="col-lg-5 col-md-12">
         <div class="show-portfolio mt-4">
           <div class="container portfolio-container">
+            <h4 class="mb-3"><i class="bi bi-wallet-fill"></i> Your portfolio</h4>
             <div v-for="(coin, index) in portfolioStore.coins" :key="index">
               <CoinDetails :coin="coin" />
             </div>
             <div>
               <h5 class="pt-3 total-amount">
-                <span class="total-amount">Portfolio value:</span>
+                <span class="total-amount"
+                  ><i class="bi bi-cash-coin p-1"></i>Portfolio value:</span
+                >
                 <span class="blue-word">${{ this.portfolioStore.totalAmount }}</span>
               </h5>
             </div>
@@ -46,11 +49,11 @@ export default {
     <hr />
 
     <div class="row mt-4 justify-content-center">
-      <h5>
+      <h5 class="m-4">
         Dive deep into your portfolio with <br />
         <span class="blue-word">advanced analysis tools</span>
       </h5>
-      <div class="col-lg-6 col-md-12">
+      <div class="col-lg-6 col-md-12 mt-4">
         <div class="card col-12">
           <img
             src="https://images.unsplash.com/photo-1613442368680-a30262ad8b3b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

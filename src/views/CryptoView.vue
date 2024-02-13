@@ -15,16 +15,26 @@
             'text-success': crypto.changePercent24Hr >= 0
           }"
         >
-          24h Change: {{ crypto.changePercent24Hr }}%
+          24h Change:
+          <span class="fw-bold"
+            >{{ crypto.changePercent24Hr }}%<i
+              :class="{
+                'bi bi-arrow-down': crypto.changePercent24Hr < 0,
+                'bi bi-arrow-up': crypto.changePercent24Hr >= 0
+              }"
+            ></i>
+          </span>
         </p>
-        <router-link to="/" class="btn btn-primary">Back to List</router-link>
+        <router-link to="/" class="btn btn-primary"
+          ><i class="bi bi-list-ul"></i> Back to List</router-link
+        >
       </div>
 
       <div class="col-lg-7 col-12">
         <hr />
 
         <div class="general-info bg-light p-4 mt-4">
-          <h4>General Crypto Information</h4>
+          <h4><i class="bi bi-info-circle"></i> General Crypto Information</h4>
           <p>
             Cryptocurrencies are digital or virtual currencies used as a medium of exchange. They
             are decentralized and rely on blockchain technology for security and transparency.
@@ -79,7 +89,7 @@ export default {
         this.crypto = {
           ...this.crypto,
           marketCapUsd: Number(this.crypto.marketCapUsd).toFixed(),
-          priceUsd: Number(this.crypto.priceUsd).toFixed(3),
+          priceUsd: Number(this.crypto.priceUsd).toFixed(2),
           logo: `https://assets.coincap.io/assets/icons/${this.crypto.symbol.toLowerCase()}@2x.png`,
           changePercent24Hr: Number(this.crypto.changePercent24Hr).toFixed(2)
         }

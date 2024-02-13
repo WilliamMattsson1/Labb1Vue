@@ -18,7 +18,9 @@
       </div>
       <div class="col-lg-9 col-12 pt-4">
         <div v-if="currentCategory === 'Cryptocurrencies'">
-          <h2 class="text-md-start text-center">Cryptocurrencies</h2>
+          <h2 class="text-md-start text-center">
+            <i class="bi bi-currency-bitcoin"></i>Cryptocurrencies
+          </h2>
           <p class="learn-text">
             Cryptocurrencies, secured by special codes, are digital assets not governed by any
             authority. Stored on blockchains, they're easily transferred. Bitcoin, the pioneer,
@@ -47,7 +49,7 @@
           </p>
         </div>
         <div v-else-if="currentCategory === 'Wallets'">
-          <h2 class="text-md-start text-center">Wallets</h2>
+          <h2 class="text-md-start text-center"><i class="bi bi-wallet2"></i> Wallets</h2>
           <p class="learn-text">
             Crypto wallets, like physical wallets for cash, securely store digital coins such as
             Bitcoin or Ethereum. They come in two types: software wallets on devices and hardware
@@ -69,7 +71,7 @@
           </p>
         </div>
         <div v-else-if="currentCategory === 'Blockchain'">
-          <h2 class="text-md-start text-center">Blockchain</h2>
+          <h2 class="text-md-start text-center"><i class="bi bi-wifi"></i> Blockchain</h2>
           <p class="learn-text">
             Blockchain is a decentralized, distributed ledger technology that records transactions
             across multiple computers in a secure, transparent, and tamper-resistant manner. Each
@@ -96,7 +98,9 @@
           </p>
         </div>
         <div v-else-if="currentCategory === 'Trading'" class="p-2">
-          <h2 class="text-md-start text-center">Trading & investing</h2>
+          <h2 class="text-md-start text-center">
+            <i class="bi bi-piggy-bank"></i>Trading & investing
+          </h2>
           <p class="learn-text">
             Trading and investing are two common ways people engage with cryptocurrencies. Trading
             involves buying and selling digital assets with the aim of making short-term profits by

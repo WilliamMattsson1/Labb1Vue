@@ -2,8 +2,8 @@
   <div class="d-flex justify-content-between coin-container border-bottom">
     <h6>{{ coin.title }} - ${{ coin.amount }}</h6>
     <div>
-      <p class="badge bg-secondary rounded-pill allocation">{{ getPercentage }}%</p>
-      <i class="material-icons" @click="portfolioStore.deleteCoin(coin.id)">close</i>
+      <p class="badge bg-secondary rounded-pill allocation mt-2">{{ getPercentage }}%</p>
+      <i class="bi bi-x-lg p-1" @click="portfolioStore.deleteCoin(coin.id)"></i>
     </div>
   </div>
 </template>

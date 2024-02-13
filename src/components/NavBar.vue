@@ -60,18 +60,20 @@ export default {
           </ul>
           <form class="d-flex">
             <input
-              class="form-control me-2"
+              class="form-control"
               type="search"
               placeholder="Search coins"
               aria-label="Search"
               v-model="searchTerm"
             />
-            <RouterLink
-              :to="`/${searchTerm.toLowerCase()}`"
-              class="btn btn-secondary"
-              @click="resetForm"
-              >Search</RouterLink
-            >
+            <div class="container">
+              <RouterLink
+                :to="`/${searchTerm.toLowerCase()}`"
+                class="btn btn-secondary"
+                @click="resetForm"
+                ><i class="bi bi-search"></i> Search</RouterLink
+              >
+            </div>
           </form>
         </div>
       </div>

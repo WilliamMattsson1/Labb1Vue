@@ -1,13 +1,15 @@
 <template>
   <div v-if="isFavoritesPopupVisible" class="popup-background">
-    <div v-if="isFavoritesPopupVisible" class="favorites-popup">
-      <h3>Your Favorites</h3>
+    <div v-if="isFavoritesPopupVisible" class="favorites-popup text-center text-lg-start">
+      <h3><i class="bi bi-star-fill"></i> Your Favorites</h3>
       <ol>
         <li v-for="(favoriteCrypto, index) in favoriteCryptos" :key="index">
           {{ favoriteCrypto.name }} - {{ favoriteCrypto.symbol }}
         </li>
       </ol>
-      <button @click="closeFavoritesPopup" class="btn btn-secondary">Close</button>
+      <button @click="closeFavoritesPopup" class="btn btn-secondary">
+        <i class="bi bi-x-lg"></i> Close
+      </button>
     </div>
   </div>
 </template>
