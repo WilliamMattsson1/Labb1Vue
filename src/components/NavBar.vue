@@ -58,7 +58,7 @@ export default {
               >
             </li>
           </ul>
-          <form class="d-flex">
+          <div class="d-flex">
             <input
               class="form-control"
               type="search"
@@ -74,7 +74,7 @@ export default {
                 ><i class="bi bi-search"></i> Search</RouterLink
               >
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </nav>

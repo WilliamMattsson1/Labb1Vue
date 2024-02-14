@@ -60,7 +60,7 @@
       <img src="../assets/searchError2.png" alt="search error" class="search-error-img" />
     </div>
     <RouterLink class="btn btn-primary mt-4" to="/"
-      >Home <i class="material-icons justify-content-center"> home</i></RouterLink
+      ><i class="bi bi-house-fill"></i> Home</RouterLink
     >
   </div>
 </template>

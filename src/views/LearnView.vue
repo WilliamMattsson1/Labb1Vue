@@ -97,7 +97,7 @@
             assets beyond simple monetary transactions.
           </p>
         </div>
-        <div v-else-if="currentCategory === 'Trading'" class="p-2">
+        <div v-else-if="currentCategory === 'Trading'">
           <h2 class="text-md-start text-center">
             <i class="bi bi-piggy-bank"></i>Trading & investing
           </h2>
