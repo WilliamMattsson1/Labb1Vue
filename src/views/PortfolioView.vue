@@ -53,13 +53,25 @@ export default {
         Dive deep into your portfolio with <br />
         <span class="blue-word">advanced analysis tools</span>
       </h5>
-      <div class="col-lg-6 col-md-12 mt-4">
+      <div class="col-lg-6 col-md-12">
+        <div v-if="portfolioStore.coins.length > 0">
+          <PortfolioChart />
+        </div>
+        <div v-else>
+          <div class="card col-12">
+            <img src="../assets/ccPro.png" class="card-img-top" alt="Analytics" />
+            <div class="card-body">
+              <h6 class="card-title"></h6>
+              <p class="card-text">
+                Add assets to your portfolio to view analytics of your whole portfolio
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mt-4">
         <div class="card col-12">
-          <img
-            src="https://images.unsplash.com/photo-1613442368680-a30262ad8b3b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            class="card-img-top"
-            alt="Trading image"
-          />
+          <img src="../assets/ccPro.png" class="card-img-top" alt="Trading image" />
           <div class="card-body">
             <h6 class="card-title">CC Pro 30% Off</h6>
             <p class="card-text">Get CC Pro right now to get access to 40+ analysis tools!</p>
@@ -67,7 +79,7 @@ export default {
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12">
+      <!-- <div class="col-lg-6 col-md-12">
         <div v-if="portfolioStore.coins.length > 0">
           <PortfolioChart />
         </div>
@@ -86,7 +98,7 @@ export default {
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
