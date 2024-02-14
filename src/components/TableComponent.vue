@@ -264,6 +264,7 @@ table {
 .heart-icon {
   color: #ff914d;
   cursor: pointer;
+  padding-top: 0.8rem;
 }
 
 .favorites-popup {
@@ -308,6 +309,10 @@ table {
   color: white;
 }
 
+td {
+  vertical-align: middle;
+}
+
 @media (max-width: 1000px) {
   .mobile-table {
     display: block;
@@ -319,6 +324,10 @@ table {
   .favorites-popup {
     width: 100%;
     border-radius: 0;
+  }
+
+  .heart-icon {
+    padding: 1rem;
   }
 }
 </style>
