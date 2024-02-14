@@ -1,3 +1,4 @@
+p
 <script setup>
 import axios from 'axios'
 import PopupComponent from './PopupComponent.vue'
@@ -45,7 +46,16 @@ export default {
       console.log('Ändrade om dom till true')
     },
     /* Byter bilden */
-    changeStarImg(crypto) {
+    /* changeStarImg(crypto) {
+      crypto.isFavorite = !crypto.isFavorite
+
+      if (crypto.isFavorite) {
+        localStorage.setItem(`${crypto.name}`, true)
+      } else {
+        localStorage.removeItem(`${crypto.name}`)
+      }
+    } */
+    changeIsFavorite(crypto) {
       crypto.isFavorite = !crypto.isFavorite
 
       if (crypto.isFavorite) {
@@ -135,14 +145,22 @@ export default {
               <td>${{ crypto.priceUsd }}</td>
               <td>${{ crypto.marketCapUsdFormatted }}</td>
               <td>
-                <img
+                <!-- <img
                   @click="changeStarImg(crypto)"
                   class="favorite-star"
                   :src="crypto.isFavorite ? starImg1 : starImg0"
-                />
-                <span v-if="crypto.isFavorite" class="seeAllFav" @click="showFavoritesPopup"
+                /> -->
+                <h5
+                  class="heart-icon"
+                  :class="{
+                    'bi bi-heart': !crypto.isFavorite,
+                    'bi bi-heart-fill': crypto.isFavorite
+                  }"
+                  @click="changeIsFavorite(crypto)"
+                ></h5>
+                <!-- <span v-if="crypto.isFavorite" class="seeAllFav" @click="showFavoritesPopup"
                   >Show favorites</span
-                >
+                > -->
               </td>
             </tr>
           </tbody>
@@ -173,11 +191,14 @@ export default {
               </td>
               <td>${{ crypto.priceUsd }}</td>
               <td>
-                <img
-                  @click="changeStarImg(crypto)"
-                  class="favorite-star m-4"
-                  :src="crypto.isFavorite ? starImg1 : starImg0"
-                />
+                <h5
+                  class="heart-icon"
+                  :class="{
+                    'bi bi-heart': !crypto.isFavorite,
+                    'bi bi-heart-fill': crypto.isFavorite
+                  }"
+                  @click="changeIsFavorite(crypto)"
+                ></h5>
               </td>
             </tr>
           </tbody>
@@ -238,6 +259,11 @@ table {
   font-weight: 700;
   color: #6106f3;
   margin-left: 2px;
+}
+
+.heart-icon {
+  color: #ff914d;
+  cursor: pointer;
 }
 
 .favorites-popup {
