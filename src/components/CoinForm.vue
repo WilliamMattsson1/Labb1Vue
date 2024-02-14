@@ -1,6 +1,6 @@
 <template>
   <h5>Add assets to your portfolio</h5>
-  <form class="add-coin-form" @submit.prevent="submitNewCoin">
+  <form name="portfolio-form" class="add-coin-form" @submit.prevent="submitNewCoin">
     <div class="mb-3 mt-3">
       <label for="newCoinName" class="form-label">Name</label>
       <input

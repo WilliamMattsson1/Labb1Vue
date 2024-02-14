@@ -62,6 +62,7 @@ export default {
             <input
               class="form-control"
               type="search"
+              name="searchInput"
               placeholder="Search coins"
               aria-label="Search"
               v-model="searchTerm"
