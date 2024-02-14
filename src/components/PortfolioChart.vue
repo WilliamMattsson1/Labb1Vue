@@ -44,6 +44,7 @@ export default {
         labels: coins.map((coin) => coin.title),
         datasets: [
           {
+            label: 'Dollar value',
             data: coins.map((coin) => coin.amount),
             backgroundColor: this.getRandomColors(coins.length)
           }
