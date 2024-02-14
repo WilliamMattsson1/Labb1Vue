@@ -103,7 +103,9 @@ export default {
   },
   computed: {
     formattedMarketCap() {
-      if (this.crypto.marketCapUsd >= 1e9) {
+      if (this.crypto.marketCapUsd >= 1e12) {
+        return (this.crypto.marketCapUsd / 1e12).toFixed(3) + 'T'
+      } else if (this.crypto.marketCapUsd >= 1e9) {
         return (this.crypto.marketCapUsd / 1e9).toFixed(2) + 'B'
       } else {
         return (this.crypto.marketCapUsd / 1e6).toFixed(1) + 'M'

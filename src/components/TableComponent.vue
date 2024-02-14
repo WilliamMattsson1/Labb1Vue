@@ -71,7 +71,9 @@ export default {
     cryptos: {
       handler(allCryptos) {
         allCryptos.forEach((crypto) => {
-          if (crypto.marketCapUsd >= 1e9) {
+          if (crypto.marketCapUsd >= 1e12) {
+            crypto.marketCapUsdFormatted = (crypto.marketCapUsd / 1e12).toFixed(3) + 'T'
+          } else if (crypto.marketCapUsd >= 1e9) {
             crypto.marketCapUsdFormatted = (crypto.marketCapUsd / 1e9).toFixed(2) + 'B'
           } else {
             crypto.marketCapUsdFormatted = (crypto.marketCapUsd / 1e6).toFixed(1) + 'M'
