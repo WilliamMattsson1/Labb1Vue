@@ -91,16 +91,25 @@ export default {
     <h1 class="text-center">Explore the <span class="blue-word">Top</span> 100 Cryptos</h1>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <button @click="loadCryptos" class="btn btn-secondary m1-1">
-          Refresh <i class="bi bi-arrow-clockwise"></i>
-        </button>
-        <button
-          @click="showFavoritesPopup"
-          class="btn btn-primary m-1"
-          v-if="favoriteCryptos.length > 0"
-        >
-          Show Favorites <i class="bi bi-star"></i>
-        </button>
+        <div class="d-flex align-items-center">
+          <button @click="loadCryptos" class="btn btn-secondary m1-1">
+            Refresh <i class="bi bi-arrow-clockwise"></i>
+          </button>
+
+          <div>
+            <button
+              @click="showFavoritesPopup"
+              class="btn btn-primary m-1"
+              v-if="favoriteCryptos.length > 0"
+            >
+              Show Favorites <i class="bi bi-star"></i>
+            </button>
+            <span class="favorite-cryptos-length" v-if="favoriteCryptos.length > 0">{{
+              favoriteCryptos.length
+            }}</span>
+          </div>
+        </div>
+
         <table
           v-if="cryptos.length > 0"
           class="desktop-table table table-striped table-light table-hover"
@@ -260,6 +269,17 @@ table {
 
 .mobile-table {
   display: none;
+}
+
+.favorite-cryptos-length {
+  background-color: #ff914d;
+  border-radius: 10px;
+  padding: 4px 8px;
+  margin-left: 5px;
+  position: relative;
+  bottom: 14px;
+  right: 20px;
+  color: white;
 }
 
 @media (max-width: 1000px) {
