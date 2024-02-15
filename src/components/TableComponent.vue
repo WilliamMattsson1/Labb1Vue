@@ -225,6 +225,7 @@ export default {
 <style>
 .table-component {
   margin-top: 10vh;
+  overflow-x: hidden;
 }
 
 h1 {
