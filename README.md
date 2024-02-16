@@ -71,10 +71,8 @@ The primary focus with this project was to gain experience working with Vue.js, 
 1. Clone the project to your local machine: `git clone https://github.com/WilliamMattsson1/Labb1Vue.git`
 2. Navigate to the project folder: `cd Labb1Vue`
 3. Install dependencies: `npm install`
-4. Visit the Vite server: http://localhost:5173/
-
-## Compile and Hot-Reload for Development
-To start the development server, run: `npm run dev`
+4. To start the development server, run: `npm run dev`
+5. Visit the Vite server: http://localhost:5173/
 
 ## Compile and Minify for Production
 To compile and minify for production, run: `npm run build`
