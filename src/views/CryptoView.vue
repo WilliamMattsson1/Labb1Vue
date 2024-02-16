@@ -77,6 +77,7 @@ export default {
   },
   async created() {
     this.getCryptoData()
+    window.scrollTo({top: 0, left: 0})
   },
   methods: {
     async getCryptoData() {
