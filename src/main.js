@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 
 import 'bootstrap/dist/css/bootstrap.css' // importera bootstrap css stilar
 
-import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.js'
+import 'bootstrap'
 
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -16,6 +16,5 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(bootstrap)
 
 app.mount('#app')
